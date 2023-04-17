@@ -2,15 +2,21 @@
 
 import 'dart:ui';
 
-import 'package:cashbox/Auth/SignUp.dart';
-import 'package:cashbox/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Utils.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   Login({Key? key}) : super(key: key);
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
+
+  bool _obscurePassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -68,9 +74,9 @@ class Login extends StatelessWidget {
                             ],
                           ),
                           TextFormField(
+                            obscureText: false,
                             style: myTextStyle,
                             keyboardType: TextInputType.emailAddress,
-                            obscureText: false,
                             decoration: InputDecoration(
                                 suffixIcon: IconButton(
                               onPressed: () {},
@@ -104,6 +110,7 @@ class Login extends StatelessWidget {
                             ],
                           ),
                           TextFormField(
+                              obscureText: _obscurePassword,
                               style: myTextStyle,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
@@ -115,9 +122,17 @@ class Login extends StatelessWidget {
                                       Radius.circular(size.width * 0.04),
                                     )),
                                 suffixIcon: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.visibility_outlined,
-                                      color: iconColor),
+                                  onPressed: () {
+                                    setState(() {
+                                      _obscurePassword = !_obscurePassword;
+                                    });
+                                  },
+                                  icon: Icon(
+                                    _obscurePassword
+                                        ? Icons.visibility_off_outlined
+                                        : Icons.visibility_outlined,
+                                    color: iconColor,
+                                  ),
                                 ),
                               )),
                         ],
@@ -133,10 +148,7 @@ class Login extends StatelessWidget {
                 height: size.height * 0.07,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => HomePage()),
-                    );
+                    Navigator.pushNamed(context, '/bottombar');
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
@@ -151,10 +163,11 @@ class Login extends StatelessWidget {
                     primary: Colors.black,
                   ),
                   child: Text(
+                    overflow: TextOverflow.visible,
                     "Sign in",
                     style: GoogleFonts.inter(
                       color: Colors.white,
-                      fontSize: 22,
+                      fontSize: size.width * 0.05,
                       fontWeight: FontWeight.w600,
                       fontStyle: FontStyle.normal,
                     ),
@@ -166,6 +179,9 @@ class Login extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/forgotpassword');
+                    },
                     child: Text(
                       "Forgot your password?",
                       style: GoogleFonts.inter(
@@ -180,10 +196,7 @@ class Login extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SignUp()),
-                      );
+                      Navigator.pushNamed(context, '/signup');
                     },
                     child: Text(
                       "Sign up",
@@ -203,5 +216,3 @@ class Login extends StatelessWidget {
     );
   }
 }
-
-void setState(Null Function() param0) {}

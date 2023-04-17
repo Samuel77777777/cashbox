@@ -6,196 +6,276 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Utils.dart';
 
-class SignUp extends StatelessWidget {
+class SignUp extends StatefulWidget {
   SignUp({Key? key}) : super(key: key);
+
+  @override
+  State<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+  final _formKey = GlobalKey<FormState>();
+
+  bool _passwordvisible = false;
+
+
+// for validation
+  late String _fullName;
+  late String _email;
+  late String _phone;
+  late String _password;
+
+
+// to submit the form
+  void _submitForm() {
+    if (_formKey.currentState!.validate()) {
+      Navigator.pushNamed(context, '/Accountcreate');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: backgroundColor,
+        elevation: 0,
+      ),
       backgroundColor: backgroundColor,
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
             children: [
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Create New Account",
-                    style: GoogleFonts.inter(
-                      fontStyle: FontStyle.normal,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 32,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
+                
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Create new account",
+                      style: GoogleFonts.inter(
+                          textStyle: TextStyle(
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                        fontSize: size.width * 0.08,
+                      )),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 30),
               Form(
+                  key: _formKey,
                   child: Column(
-                children: [
-                  Container(
-                    width: size.width * 0.9,
-                    alignment: Alignment.center,
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "Full Name",
-                                textAlign: TextAlign.end,
-                                style: GoogleFonts.inter(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 18,
-                                    fontStyle: FontStyle.normal,
-                                    color: iconColor),
+                    children: [
+                      SizedBox(
+                        child: Container(
+                          width: size.width * 0.9,
+                          alignment: Alignment.center,
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Full Name",
+                                      textAlign: TextAlign.end,
+                                      style: GoogleFonts.inter(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 18,
+                                          fontStyle: FontStyle.normal,
+                                          color: iconColor),
+                                    ),
+                                  ),
+                                ],
                               ),
+                              TextFormField(
+                                style: myTextStyle,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                    suffixIcon: IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.person_outlined,
+                                    color: iconColor,
+                                  ),
+                                )),
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'Please enter your full name';
+                                  }
+                                  return null;
+                                },
+                                onSaved: (value) => _fullName = value!,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(
+                        height: 30,
+                      ),
+                      // email
+                      Container(
+                        width: size.width * 0.9,
+                        alignment: Alignment.center,
+                        // padding: EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "Email",
+                                    textAlign: TextAlign.end,
+                                    style: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 18,
+                                        fontStyle: FontStyle.normal,
+                                        color: iconColor),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            TextFormField(
+                              style: myTextStyle,
+                              keyboardType: TextInputType.emailAddress,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                suffixIcon: IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.email_outlined,
+                                    color: iconColor,
+                                  ),
+                                ),
+                              ),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your email';
+                                } else if (!value.contains('@')) {
+                                  return 'Please enter a valid email';
+                                }
+                                return null;
+                              },
+                              onSaved: (value) => _email = value!,
                             ),
                           ],
                         ),
-                        TextFormField(
-                          style: myTextStyle,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.person_outlined,
-                              color: iconColor,
-                            ),
-                          )),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  // email
-                  Container(
-                    width: size.width * 0.9,
-                    alignment: Alignment.center,
-                    // padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Column(
-                      children: [
-                        Row(
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      //phone
+                      Container(
+                        width: size.width * 0.9,
+                        alignment: Alignment.center,
+                    
+                        child: Column(
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "Email",
-                                textAlign: TextAlign.end,
-                                style: GoogleFonts.inter(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 18,
-                                    fontStyle: FontStyle.normal,
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "Phone number",
+                                    textAlign: TextAlign.end,
+                                    style: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 18,
+                                        fontStyle: FontStyle.normal,
+                                        color: iconColor),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            TextFormField(
+                              style: myTextStyle,
+                              keyboardType: TextInputType.phone,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                  suffixIcon: IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.phone_outlined,
                                     color: iconColor),
-                              ),
+                              )),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your phone number';
+                                }
+                                return null;
+                              },
+                              onSaved: (value) => _phone = value!,
                             ),
                           ],
                         ),
-                        TextFormField(
-                          style: myTextStyle,
-                          keyboardType: TextInputType.emailAddress,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.email_outlined,
-                              color: iconColor,
-                            ),
-                          )),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  //phone
-                  Container(
-                    width: size.width * 0.9,
-                    alignment: Alignment.center,
-                    // padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Column(
-                      children: [
-                        Row(
+                      ),
+
+                      SizedBox(
+                        height: 30,
+                      ),
+                      // password
+                      Container(
+                        width: size.width * 0.9,
+                        alignment: Alignment.center,
+                        // padding: EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Column(
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "Phone number",
-                                textAlign: TextAlign.end,
-                                style: GoogleFonts.inter(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 18,
-                                    fontStyle: FontStyle.normal,
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "Password",
+                                    textAlign: TextAlign.end,
+                                    style: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 18,
+                                        fontStyle: FontStyle.normal,
+                                        color: iconColor),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            TextFormField(
+                              style: myTextStyle,
+                              keyboardType: TextInputType.visiblePassword,
+                              obscureText: _passwordvisible,
+                              decoration: InputDecoration(
+                                  suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _passwordvisible = !_passwordvisible;
+                                  });
+                                },
+                                icon: Icon(
+                                    _passwordvisible
+                                        ? Icons.visibility_off
+                                        : Icons.visibility,
                                     color: iconColor),
-                              ),
+                              )),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your password';
+                                } else if (value.length < 6) {
+                                  return 'Password must be at least 6 characters';
+                                }
+                                return null;
+                              },
+                              onSaved: (value) => _password = value!,
                             ),
                           ],
                         ),
-                        TextFormField(
-                          style: myTextStyle,
-                          keyboardType: TextInputType.phone,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.phone_outlined, color: iconColor),
-                          )),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  // password
-                  Container(
-                    width: size.width * 0.9,
-                    alignment: Alignment.center,
-                    // padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "Password",
-                                textAlign: TextAlign.end,
-                                style: GoogleFonts.inter(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 18,
-                                    fontStyle: FontStyle.normal,
-                                    color: iconColor),
-                              ),
-                            ),
-                          ],
-                        ),
-                        TextFormField(
-                          style: myTextStyle,
-                          keyboardType: TextInputType.visiblePassword,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.visibility_outlined,
-                                color: iconColor),
-                          )),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              )),
+                      ),
+                    ],
+                  )),
+
               SizedBox(height: size.height * 0.05),
               Container(
                   decoration:
@@ -203,31 +283,22 @@ class SignUp extends StatelessWidget {
                   width: size.width * 0.9,
                   height: size.height * 0.07,
                   child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AccountScreen()),
-                      );
-                    },
+                    onPressed: _submitForm,
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      // set the elevation to 1
+
                       elevation: 1,
 
-                      // set the padding of the button using a percentage of the screen height
                       padding:
                           EdgeInsets.symmetric(vertical: size.height * 0.02),
 
-                      // set the color of the button to black
                       // ignore: deprecated_member_use
                       primary: Colors.black,
                     ),
-
-                    // add the text for the button in white using Google Fonts
                     child: Text(
+                      overflow: TextOverflow.visible,
                       "Sign In",
                       style: GoogleFonts.inter(
                           color: Colors.white,
@@ -251,10 +322,7 @@ class SignUp extends StatelessWidget {
                           color: iconColor)),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Login()),
-                      );
+                      Navigator.pushNamed(context, '/');
                     },
                     child: Text(
                       "Sign in",
@@ -266,7 +334,10 @@ class SignUp extends StatelessWidget {
                     ),
                   )
                 ],
-              )
+              ),
+              SizedBox(
+                height: 30,
+              ),
             ],
           ),
         ),

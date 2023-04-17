@@ -1,33 +1,20 @@
 import 'package:cashbox/AddcasdScreens/Addcash.dart';
+import 'package:cashbox/Auth/Login.dart';
 import 'package:cashbox/Cashout/Cashout.dart';
+import 'package:cashbox/SetttingScreen.dart';
 import 'package:cashbox/Utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
+import 'package:awesome_bottom_bar/widgets/inspired/inspired.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    int _selectedIndex = 0;
     return Scaffold(
       backgroundColor: backgroundColor,
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: backgroundColor,
-        elevation: 0,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: iconColor,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Account',
-          ),
-        ],
-      ),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: backgroundColor,
@@ -86,10 +73,7 @@ class HomePage extends StatelessWidget {
                       primary: Colors.black,
                     ),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => AddCash()),
-                      );
+                      Navigator.pushNamed(context, '/Addcash');
                     },
                     child: Center(
                       child: Text(
@@ -122,10 +106,7 @@ class HomePage extends StatelessWidget {
                       primary: Colors.black,
                     ),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Cashout()),
-                      );
+                      Navigator.pushNamed(context, '/cashout');
                     },
                     child: Center(
                       child: Text(
@@ -171,8 +152,8 @@ class HomePage extends StatelessWidget {
             SizedBox(height: 20),
             // list view
             ListView(
+              padding: EdgeInsets.all(8.0),
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
               children: [
                 Container(
                   margin: EdgeInsets.all(5),
@@ -372,3 +353,14 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+const List<TabItem> items = [
+  TabItem(
+    icon: Icons.home,
+    // title: 'Home',
+  ),
+  TabItem(
+    icon: Icons.account_box,
+    title: 'profile',
+  ),
+];

@@ -13,9 +13,7 @@ class AccountScreen extends StatelessWidget {
         child: SafeArea(
             child: Column(
           children: [
-            SizedBox(
-              height: 169,
-            ),
+            SizedBox(height: size.height * 0.1),
             Center(
               child: Text(
                 'Your account has \n been created',
@@ -37,39 +35,28 @@ class AccountScreen extends StatelessWidget {
               height: 195,
             ),
             Container(
-                // set the border radius to 10
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(size.width * 0.03)),
-
-                // set the width and height of the container
                 width: size.width * 0.9,
                 height: size.height * 0.07,
-
-                // add an ElevatedButton to add cash to the wallet
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Login()),
-                    );
+                    Navigator.pushNamed(context, '/');
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    // set the elevation to 1
+
                     elevation: 1,
 
-                    // set the padding of the button using a percentage of the screen height
                     padding: EdgeInsets.symmetric(vertical: size.height * 0.02),
 
-                    // set the color of the button to black
                     // ignore: deprecated_member_use
                     primary: Colors.black,
                   ),
-
-                  // add the text for the button in white using Google Fonts
                   child: Text(
+                    overflow: TextOverflow.visible,
                     "Sign In",
                     style: GoogleFonts.inter(
                       color: Colors.white,

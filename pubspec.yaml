@@ -16,9 +16,9 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   smooth_page_indicator: ^1.0.1
-  flutter_native_splash: ^2.2.9
   flutter_launcher_icons: ^0.11.0
   google_fonts: ^4.0.3
+  awesome_bottom_bar: ^1.2.2
 
 dev_dependencies:
   flutter_test:
@@ -29,13 +29,6 @@ flutter_icons:
   image_path: "assets/splash.png"
   android: true
   ios: true
-
-flutter_native_splash:
-  color: "#E5E5E5"
-  android: true
-  ios: true
-  web: false
-  image: assets/splash.png
 
 flutter:
   uses-material-design: true

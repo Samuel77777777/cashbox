@@ -14,11 +14,8 @@ class Cashout extends StatelessWidget {
     return Scaffold(
         backgroundColor: backgroundColor,
         appBar: AppBar(
- 
           backgroundColor: backgroundColor,
           elevation: 0,
-
-    
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back,
@@ -28,7 +25,6 @@ class Cashout extends StatelessWidget {
               Navigator.pop(context);
             },
           ),
-
           title: Text(
             'Add Cash',
             style: GoogleFonts.inter(
@@ -37,19 +33,13 @@ class Cashout extends StatelessWidget {
                 fontSize: 20,
                 color: Colors.black),
           ),
-
-        
           centerTitle: true,
         ),
         body: SingleChildScrollView(
-           
             child: Column(children: [
-  
           SizedBox(
             height: 102,
           ),
-
-      
           Text(
             'Cash out to mobile money wallet',
             style: GoogleFonts.inter(
@@ -59,19 +49,11 @@ class Cashout extends StatelessWidget {
                 color: Colors.black,
                 height: 1.5),
           ),
-
-    
           SizedBox(
             height: 57,
           ),
-
-     
           Center(child: Image(image: AssetImage('./assets/cashout.png'))),
-
-   
           SizedBox(height: 32),
-
-
           Center(
             child: Text(
               'Please choose the mobile\n money money wallet you would like to\n cash out to.',
@@ -84,9 +66,7 @@ class Cashout extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-
           SizedBox(height: size.height * 0.06),
-
           Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(size.width * 0.03)),
@@ -98,22 +78,18 @@ class Cashout extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
-  
                     borderRadius: BorderRadius.circular(10),
                   ),
-          
+
                   elevation: 1,
 
-         
                   padding: EdgeInsets.symmetric(vertical: size.height * 0.02),
 
-           
                   // ignore: deprecated_member_use
                   primary: Colors.black,
                 ),
-
-          
                 child: Text(
+                  overflow: TextOverflow.visible,
                   "Cash out",
                   style: GoogleFonts.inter(
                     color: Colors.white,
@@ -122,10 +98,12 @@ class Cashout extends StatelessWidget {
                     fontStyle: FontStyle.normal,
                   ),
                 ),
-              ))
+              )),
         ])));
   }
 }
+
+
 
 void _showAddCashModal(BuildContext context) {
   final Size size = MediaQuery.of(context).size;
@@ -172,10 +150,7 @@ void _showAddCashModal(BuildContext context) {
                 height: size.height * 0.07,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CashSuccess()),
-                    );
+                    Navigator.pushNamed(context, '/cashoutsuccess');
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
@@ -186,6 +161,7 @@ void _showAddCashModal(BuildContext context) {
                     primary: Colors.black,
                   ),
                   child: Text(
+                    overflow: TextOverflow.visible,
                     "Orange Money",
                     style: GoogleFonts.inter(
                       color: Colors.white,

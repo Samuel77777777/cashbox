@@ -14,11 +14,8 @@ class AddCash extends StatelessWidget {
     return Scaffold(
         backgroundColor: backgroundColor,
         appBar: AppBar(
-          // set the background color to white
           backgroundColor: backgroundColor,
           elevation: 0,
-
-          // add a back button that doesn't do anything when pressed
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back,
@@ -28,8 +25,6 @@ class AddCash extends StatelessWidget {
               Navigator.pop(context);
             },
           ),
-
-          // add the title of the page in black using Google Fonts
           title: Text(
             'Add Cash',
             style: GoogleFonts.inter(
@@ -38,25 +33,15 @@ class AddCash extends StatelessWidget {
                 fontSize: 20,
                 color: Colors.black),
           ),
-
-          // center the title
           centerTitle: true,
         ),
         body: SingleChildScrollView(
-            // create a scrollable column for the content
             child: Column(children: [
-          // add a SizedBox to create some space between the app bar and the content
           SizedBox(
             height: size.height * 0.12,
           ),
-
-          // add an image using an AssetImage
           Center(child: Image(image: AssetImage('./assets/addcash.png'))),
-
-          // add another SizedBox to create some space between the image and the text
           SizedBox(height: size.height * 0.08),
-
-          // add a text widget to explain what the user needs to do
           Center(
             child: Text(
               'Wallet is empty. Add cash from\n mobile money to your wallet',
@@ -69,11 +54,7 @@ class AddCash extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-
-          // add another SizedBox to create space between the text and the button
           SizedBox(height: size.height * 0.06),
-
-          // add a header for the button
           Text(
             'Add cash to wallet',
             style: GoogleFonts.inter(
@@ -82,21 +63,12 @@ class AddCash extends StatelessWidget {
               fontStyle: FontStyle.normal,
             ),
           ),
-
-          // add another SizedBox to create space between the header and the button
           SizedBox(height: size.height * 0.06),
-
-          // add a container to hold the button
           Container(
-              // set the border radius to 10
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(size.width * 0.03)),
-
-              // set the width and height of the container
               width: size.width * 0.9,
               height: size.height * 0.07,
-
-              // add an ElevatedButton to add cash to the wallet
               child: ElevatedButton(
                 onPressed: () {
                   _showAddCashModal(context);
@@ -105,19 +77,17 @@ class AddCash extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  // set the elevation to 1
+
                   elevation: 1,
 
-                  // set the padding of the button using a percentage of the screen height
                   padding: EdgeInsets.symmetric(vertical: size.height * 0.02),
 
                   // set the color of the button to black
                   // ignore: deprecated_member_use
                   primary: Colors.black,
                 ),
-
-                // add the text for the button in white using Google Fonts
                 child: Text(
+                  overflow: TextOverflow.visible,
                   "Add Cash",
                   style: GoogleFonts.inter(
                     color: Colors.white,
@@ -178,10 +148,7 @@ void _showAddCashModal(BuildContext context) {
                 height: size.height * 0.07,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => AddCashSuccess()),
-                    );
+                    Navigator.pushNamed(context, '/addcashbalance');
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
@@ -193,6 +160,7 @@ void _showAddCashModal(BuildContext context) {
                     primary: Colors.black,
                   ),
                   child: Text(
+                    overflow: TextOverflow.visible,
                     "Orange Money",
                     style: GoogleFonts.inter(
                       color: Colors.white,
