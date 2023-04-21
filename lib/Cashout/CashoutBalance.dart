@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Utils.dart';
 
-class Addcashbalance extends StatelessWidget {
-  const Addcashbalance({super.key});
+class CashoutBalance extends StatelessWidget {
+  const CashoutBalance({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +32,8 @@ class Addcashbalance extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Center(
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -99,7 +99,7 @@ class Addcashbalance extends StatelessWidget {
                     ),
                     child: Text(
                       overflow: TextOverflow.visible,
-                      "Add cash",
+                      "Cashout",
                       style: GoogleFonts.inter(
                         color: Colors.white,
                         fontSize: 22,

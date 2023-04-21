@@ -7,6 +7,7 @@ import 'package:cashbox/Auth/Otp.dart';
 import 'package:cashbox/Auth/SignUp.dart';
 import 'package:cashbox/Bottomanav.dart';
 import 'package:cashbox/Cashout/Cashout.dart';
+import 'package:cashbox/Cashout/CashoutBalance.dart';
 import 'package:cashbox/Cashout/CashoutSuccess.dart';
 import 'package:cashbox/HomePage.dart';
 import 'package:cashbox/splashscreen.dart';
@@ -28,5 +29,6 @@ class MyAppRoutes {
     '/cashoutsuccess': (context) => CashSuccess(),
     '/addcashbalance': (context) => Addcashbalance(),
     '/forgotpassword': (context) => ForgotPassword(),
+    '/cashoutbalance': (context) => CashoutBalance(),
   };
 }

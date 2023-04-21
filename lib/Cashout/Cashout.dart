@@ -103,8 +103,6 @@ class Cashout extends StatelessWidget {
   }
 }
 
-
-
 void _showAddCashModal(BuildContext context) {
   final Size size = MediaQuery.of(context).size;
   showModalBottomSheet<void>(
@@ -150,7 +148,7 @@ void _showAddCashModal(BuildContext context) {
                 height: size.height * 0.07,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/cashoutsuccess');
+                    Navigator.pushNamed(context, '/cashoutbalance');
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
