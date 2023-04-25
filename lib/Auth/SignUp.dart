@@ -18,13 +18,17 @@ class _SignUpState extends State<SignUp> {
 
   bool _passwordvisible = false;
 
+  // controllers
+  final fullnameController = TextEditingController();
+  final passwordController = TextEditingController();
+  final emailController = TextEditingController();
+  final phoneController = TextEditingController();
 
 // for validation
   late String _fullName;
   late String _email;
   late String _phone;
   late String _password;
-
 
 // to submit the form
   void _submitForm() {
@@ -49,7 +53,6 @@ class _SignUpState extends State<SignUp> {
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
-                
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -94,6 +97,7 @@ class _SignUpState extends State<SignUp> {
                                 ],
                               ),
                               TextFormField(
+                                controller: fullnameController,
                                 style: myTextStyle,
                                 obscureText: false,
                                 decoration: InputDecoration(
@@ -144,6 +148,7 @@ class _SignUpState extends State<SignUp> {
                               ],
                             ),
                             TextFormField(
+                              controller: emailController,
                               style: myTextStyle,
                               keyboardType: TextInputType.emailAddress,
                               obscureText: false,
@@ -176,7 +181,6 @@ class _SignUpState extends State<SignUp> {
                       Container(
                         width: size.width * 0.9,
                         alignment: Alignment.center,
-                    
                         child: Column(
                           children: [
                             Row(
@@ -196,6 +200,7 @@ class _SignUpState extends State<SignUp> {
                               ],
                             ),
                             TextFormField(
+                              controller: phoneController,
                               style: myTextStyle,
                               keyboardType: TextInputType.phone,
                               obscureText: false,
@@ -244,6 +249,7 @@ class _SignUpState extends State<SignUp> {
                               ],
                             ),
                             TextFormField(
+                              controller: passwordController,
                               style: myTextStyle,
                               keyboardType: TextInputType.visiblePassword,
                               obscureText: _passwordvisible,

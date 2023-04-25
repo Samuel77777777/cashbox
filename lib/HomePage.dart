@@ -151,11 +151,193 @@ class HomePage extends StatelessWidget {
             ),
             SizedBox(height: 20),
             // list view
-            ListView(
-              padding: EdgeInsets.all(8.0),
+            // ListView(
+            //   physics: ScrollPhysics(),
+            //   shrinkWrap: true,
+            //   padding: EdgeInsets.all(8.0),
+            //   children: [
+            //     Container(
+            //       margin: EdgeInsets.all(5),
+            //       decoration: BoxDecoration(
+            //           border: Border.all(color: Colors.black, width: 2),
+            //           borderRadius: BorderRadius.circular(10)),
+            //       child: ListTile(
+            //         leading: Icon(Icons.shopping_cart),
+            //         title: Text('Cash added',
+            //             style: GoogleFonts.inter(
+            //               fontStyle: FontStyle.normal,
+            //               fontWeight: FontWeight.w600,
+            //               fontSize: 13,
+            //             )),
+            //         subtitle: Text(
+            //           '8:40 AM, 20 November 2022',
+            //           style: GoogleFonts.inter(
+            //               fontStyle: FontStyle.normal, fontSize: 10),
+            //         ),
+            //         trailing: Column(
+            //           mainAxisAlignment: MainAxisAlignment.center,
+            //           children: [
+            //             Text(
+            //               '+500',
+            //               style: GoogleFonts.inter(
+            //                   fontStyle: FontStyle.normal,
+            //                   fontSize: 20,
+            //                   fontWeight: FontWeight.w500,
+            //                   color: Colors.black),
+            //             ),
+            //             Text(
+            //               'SLL',
+            //               style: GoogleFonts.inter(
+            //                   fontStyle: FontStyle.normal,
+            //                   fontSize: 8,
+            //                   fontWeight: FontWeight.w500,
+            //                   color: Colors.black),
+            //             )
+            //           ],
+            //         ),
+            //       ),
+            //     ),
+            //     // second container
+            //     Container(
+            //       margin: EdgeInsets.all(5),
+            //       decoration: BoxDecoration(
+            //           border: Border.all(color: Colors.black, width: 2),
+            //           borderRadius: BorderRadius.circular(10)),
+            //       child: ListTile(
+            //         leading: Icon(Icons.send_sharp),
+            //         title: Text('Cash withdrawn',
+            //             style: GoogleFonts.inter(
+            //               fontStyle: FontStyle.normal,
+            //               fontWeight: FontWeight.w600,
+            //               fontSize: 13,
+            //             )),
+            //         subtitle: Text(
+            //           '8:40 AM, 20 November 2022',
+            //           style: GoogleFonts.inter(
+            //               fontStyle: FontStyle.normal, fontSize: 10),
+            //         ),
+            //         trailing: Column(
+            //           mainAxisAlignment: MainAxisAlignment.center,
+            //           children: [
+            //             Text(
+            //               '-200',
+            //               style: GoogleFonts.inter(
+            //                   fontStyle: FontStyle.normal,
+            //                   fontSize: 20,
+            //                   fontWeight: FontWeight.w500,
+            //                   color: Colors.black),
+            //             ),
+            //             Text(
+            //               'SLL',
+            //               style: GoogleFonts.inter(
+            //                   fontStyle: FontStyle.normal,
+            //                   fontSize: 8,
+            //                   fontWeight: FontWeight.w500,
+            //                   color: Colors.black),
+            //             )
+            //           ],
+            //         ),
+            //       ),
+            //     ),
+
+            //     // third container
+            //     Container(
+            //       margin: EdgeInsets.all(5),
+            //       decoration: BoxDecoration(
+            //           border: Border.all(color: Colors.black, width: 2),
+            //           borderRadius: BorderRadius.circular(10)),
+            //       child: ListTile(
+            //         leading: Icon(Icons.shopping_cart),
+            //         title: Text('Cash added',
+            //             style: GoogleFonts.inter(
+            //               fontStyle: FontStyle.normal,
+            //               fontWeight: FontWeight.w600,
+            //               fontSize: 13,
+            //             )),
+            //         subtitle: Text(
+            //           '8:40 AM, 20 November 2022',
+            //           style: GoogleFonts.inter(
+            //               fontStyle: FontStyle.normal, fontSize: 10),
+            //         ),
+            //         trailing: Column(
+            //           mainAxisAlignment: MainAxisAlignment.center,
+            //           children: [
+            //             Text(
+            //               '+500',
+            //               style: GoogleFonts.inter(
+            //                   fontStyle: FontStyle.normal,
+            //                   fontSize: 20,
+            //                   fontWeight: FontWeight.w500,
+            //                   color: Colors.black),
+            //             ),
+            //             Text(
+            //               'SLL',
+            //               style: GoogleFonts.inter(
+            //                   fontStyle: FontStyle.normal,
+            //                   fontSize: 8,
+            //                   fontWeight: FontWeight.w500,
+            //                   color: Colors.black),
+            //             )
+            //           ],
+            //         ),
+            //       ),
+            //     ),
+
+            //     // fourth container
+            //     Container(
+            //       margin: EdgeInsets.all(5),
+            //       decoration: BoxDecoration(
+            //           border: Border.all(
+            //             color: Colors.black,
+            //             width: 2,
+            //           ),
+            //           borderRadius: BorderRadius.circular(10)),
+            //       child: ListTile(
+            //         leading: Icon(Icons.shopping_cart),
+            //         title: Text('Cash added',
+            //             style: GoogleFonts.inter(
+            //               fontStyle: FontStyle.normal,
+            //               fontWeight: FontWeight.w600,
+            //               fontSize: 13,
+            //             )),
+            //         subtitle: Text(
+            //           '8:40 AM, 20 November 2022',
+            //           style: GoogleFonts.inter(
+            //               fontStyle: FontStyle.normal, fontSize: 10),
+            //         ),
+            //         trailing: Column(
+            //           mainAxisAlignment: MainAxisAlignment.center,
+            //           children: [
+            //             Text(
+            //               '+300',
+            //               style: GoogleFonts.inter(
+            //                   fontStyle: FontStyle.normal,
+            //                   fontSize: 20,
+            //                   fontWeight: FontWeight.w500,
+            //                   color: Colors.black),
+            //             ),
+            //             Text(
+            //               'SLL',
+            //               style: GoogleFonts.inter(
+            //                   fontStyle: FontStyle.normal,
+            //                   fontSize: 8,
+            //                   fontWeight: FontWeight.w500,
+            //                   color: Colors.black),
+            //             )
+            //           ],
+            //         ),
+            //       ),
+            //     ),
+            //   ],
+            // ),
+
+            ListView.builder(
+              physics: ScrollPhysics(),
               shrinkWrap: true,
-              children: [
-                Container(
+              padding: EdgeInsets.all(8.0),
+              itemCount: 4,
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
                   margin: EdgeInsets.all(5),
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.black, width: 2),
@@ -171,164 +353,40 @@ class HomePage extends StatelessWidget {
                     subtitle: Text(
                       '8:40 AM, 20 November 2022',
                       style: GoogleFonts.inter(
-                          fontStyle: FontStyle.normal, fontSize: 10),
-                    ),
-                    trailing: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          '+500',
-                          style: GoogleFonts.inter(
-                              fontStyle: FontStyle.normal,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black),
-                        ),
-                        Text(
-                          'SLL',
-                          style: GoogleFonts.inter(
-                              fontStyle: FontStyle.normal,
-                              fontSize: 8,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                // second container
-                Container(
-                  margin: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black, width: 2),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: ListTile(
-                    leading: Icon(Icons.send_sharp),
-                    title: Text('Cash withdrawn',
-                        style: GoogleFonts.inter(
-                          fontStyle: FontStyle.normal,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 13,
-                        )),
-                    subtitle: Text(
-                      '8:40 AM, 20 November 2022',
-                      style: GoogleFonts.inter(
-                          fontStyle: FontStyle.normal, fontSize: 10),
-                    ),
-                    trailing: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          '-200',
-                          style: GoogleFonts.inter(
-                              fontStyle: FontStyle.normal,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black),
-                        ),
-                        Text(
-                          'SLL',
-                          style: GoogleFonts.inter(
-                              fontStyle: FontStyle.normal,
-                              fontSize: 8,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-
-                // third container
-                Container(
-                  margin: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black, width: 2),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: ListTile(
-                    leading: Icon(Icons.shopping_cart),
-                    title: Text('Cash added',
-                        style: GoogleFonts.inter(
-                          fontStyle: FontStyle.normal,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 13,
-                        )),
-                    subtitle: Text(
-                      '8:40 AM, 20 November 2022',
-                      style: GoogleFonts.inter(
-                          fontStyle: FontStyle.normal, fontSize: 10),
-                    ),
-                    trailing: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          '+500',
-                          style: GoogleFonts.inter(
-                              fontStyle: FontStyle.normal,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black),
-                        ),
-                        Text(
-                          'SLL',
-                          style: GoogleFonts.inter(
-                              fontStyle: FontStyle.normal,
-                              fontSize: 8,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-
-                // fourth container
-                Container(
-                  margin: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.black,
-                        width: 2,
+                        fontStyle: FontStyle.normal,
+                        fontSize: 10,
                       ),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: ListTile(
-                    leading: Icon(Icons.shopping_cart),
-                    title: Text('Cash added',
-                        style: GoogleFonts.inter(
-                          fontStyle: FontStyle.normal,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 13,
-                        )),
-                    subtitle: Text(
-                      '8:40 AM, 20 November 2022',
-                      style: GoogleFonts.inter(
-                          fontStyle: FontStyle.normal, fontSize: 10),
                     ),
                     trailing: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          '+300',
+                          index % 2 == 0
+                              ? '+500'
+                              : (index == 1 ? '-200' : '+300'),
                           style: GoogleFonts.inter(
-                              fontStyle: FontStyle.normal,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black),
+                            fontStyle: FontStyle.normal,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                          ),
                         ),
                         Text(
                           'SLL',
                           style: GoogleFonts.inter(
-                              fontStyle: FontStyle.normal,
-                              fontSize: 8,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black),
-                        )
+                            fontStyle: FontStyle.normal,
+                            fontSize: 8,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                ),
-              ],
+                );
+              },
             ),
+
             SizedBox(
               height: 10,
             ),
@@ -353,14 +411,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-const List<TabItem> items = [
-  TabItem(
-    icon: Icons.home,
-    // title: 'Home',
-  ),
-  TabItem(
-    icon: Icons.account_box,
-    title: 'profile',
-  ),
-];

@@ -15,6 +15,10 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
+// controllers
+
+  final passwordController = TextEditingController();
+  final emailController = TextEditingController();
 
   bool _obscurePassword = true;
 
@@ -30,20 +34,18 @@ class _LoginState extends State<Login> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
               // padding: const EdgeInsets.all(10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    "Sign in",
-                    style: GoogleFonts.inter(
-                        textStyle: TextStyle(
-                      fontStyle: FontStyle.normal,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black,
-                      fontSize: size.width * 0.08,
-                    )),
-                  ),
-                ],
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Sign in",
+                  style: GoogleFonts.inter(
+                      textStyle: TextStyle(
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                    fontSize: size.width * 0.08,
+                  )),
+                ),
               ),
             ),
             SizedBox(height: size.height * 0.05),
@@ -74,6 +76,7 @@ class _LoginState extends State<Login> {
                             ],
                           ),
                           TextFormField(
+                            controller: emailController,
                             obscureText: false,
                             style: myTextStyle,
                             keyboardType: TextInputType.emailAddress,
@@ -110,6 +113,7 @@ class _LoginState extends State<Login> {
                             ],
                           ),
                           TextFormField(
+                              controller: passwordController,
                               obscureText: _obscurePassword,
                               style: myTextStyle,
                               decoration: InputDecoration(
